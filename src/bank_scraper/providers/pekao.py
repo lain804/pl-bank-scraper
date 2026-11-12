@@ -14,7 +14,8 @@ from bank_scraper.models import (
 logger = logger.bind(provider="PEKAO")
 
 class PekaoProvider(RateProvider):
-    def get_rates(self):
+    @staticmethod
+    def get_rates():
         url = "https://www.pekao.com.pl/.rest/currencies/file"
         params = {
             "type": "XML",
