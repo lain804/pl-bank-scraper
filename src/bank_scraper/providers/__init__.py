@@ -1,6 +1,7 @@
-import importlib
+#import importlib
+#import pkgutil
+
 import inspect
-import pkgutil
 
 from bank_scraper.providers.base import RateProvider
 from .pekao import PekaoProvider
@@ -13,6 +14,7 @@ from .erste import ErsteProvider
 
 PROVIDERS:list[type[RateProvider]] = []
 
+# subclasses returns a list of immediate subclasses that were imported into this module
 for cls in RateProvider.__subclasses__():
     # make sure the provider is actually implemented and doesnt just inherit the base RateProvider class
     if not inspect.isabstract(cls):
