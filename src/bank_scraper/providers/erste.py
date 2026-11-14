@@ -31,19 +31,19 @@ class ErsteProvider(RateProvider):
             if rates.get(iso_currency) != None:
                 continue
 
-            buy_price = Decimal(currency.find(
+            bank_buy_price = Decimal(currency.find(
                 "td",
                 class_="exchangeRates__buy"
             ).text)
 
-            sell_price = Decimal(currency.find(
+            bank_sell_price = Decimal(currency.find(
                 "td",
                 class_="exchangeRates__sell"
             ).text)
 
             rate = ExchangeRate()
-            rate["buy"] = buy_price
-            rate["sell"] = sell_price
+            rate["buy"] = bank_sell_price
+            rate["sell"] = bank_buy_price
 
             rates[iso_currency] = rate
 
